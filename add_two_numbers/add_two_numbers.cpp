@@ -2,7 +2,6 @@
 
 // You may assume the two numbers do not contain any leading zero, except the number 0 itself.
 
-
  
 // Example 1:
 
@@ -20,7 +19,9 @@
 // Input: l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
 // Output: [8,9,9,9,0,0,0,1]
 
+
 #include<iostream>
+#include<conio.h>
 
 struct Node {
     int data;
@@ -50,4 +51,16 @@ void printList(Node* head) {
         temp = temp->next;
     }
     std::cout << std::endl;
+}
+
+int main() {
+    Node* head = nullptr;
+    insertEnd(head, 1);
+    insertEnd(head, 2);
+    insertEnd(head, 3);
+
+    printList(head);
+
+    _getch();
+    return 0;
 }
