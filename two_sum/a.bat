@@ -1,0 +1,1 @@
+g++ two_sum.cpp -o a
