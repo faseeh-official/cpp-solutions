@@ -75,4 +75,6 @@ int main() {
     Solution solution;
     vector<int> output = solution.twoSum(inputVector, target);
     cout << output[0] << ',' << ' ' << output[1];
+
+    cin.get();
 }
