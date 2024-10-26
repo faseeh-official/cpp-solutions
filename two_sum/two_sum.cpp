@@ -75,7 +75,7 @@ int main() {
     int target = stoi(targetString);
     Solution solution;
     vector<int> output = solution.twoSum(inputVector, target);
-    cout << output[0] << ',' << ' ' << output[1] << endl;
+    cout << output[0] << ", " << output[1] << endl;
 
     _getch();
     return 0;
