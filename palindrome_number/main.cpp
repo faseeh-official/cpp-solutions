@@ -17,7 +17,7 @@ public:
             for (int i = length - 1; i >= end; i--) {
                 secondHalf += num[i];
             }
-        }
+        } // Or you could remove the middle character before checking so you can get rid of this block.
         else {
             int middleIndex = ((length + 1) / 2) - 1;
             for (int i = 0; i < middleIndex; i++) {
