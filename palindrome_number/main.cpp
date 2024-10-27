@@ -1,5 +1,6 @@
 #include<iostream>
 #include<string>
+#include<conio.h>
 
 class Solution {
 public:
@@ -34,3 +35,18 @@ public:
         }
     }
 };
+
+int main() {
+    std::cout << "Enter an integer: ";
+    int input;
+    std::cin >> input;
+    bool output = Solution().isPalindrome(input);
+    if (output) {
+        std::cout << "This integer is a palindrome.";
+    }
+    else {
+        std::cout << "This integer is not a palindrome.";
+    }
+    std::cout << std::endl;
+    _getch();
+}
