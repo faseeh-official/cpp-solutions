@@ -23,26 +23,26 @@
 #include<conio.h>
 #include<vector>
 #include<unordered_map>
+#include<algorithm>
 
 using namespace std;
 
 class Solution {
 public:
-    int lengthOfLongestSubstring(string s) {
-        std::unordered_map<char, int> charIndexe; // Biggest.
-        int len = 0; // Of the longest substring.
-        int start = 0;
+    int lengthOfLongestSubstring(const string& s) {
+        unordered_map<char, int> charIndex; // Stores the last index of each character.
+        int maxLen = 0; // Maximum length of the substring.
+        int start = 0; // Start index of the current substring.
         for (int end = 0; end < s.length(); end++) {
-            if (charIndexe.count(s[end]) > 0 && charIndexe[s[end]] >= start) {
-                start = charIndexe[s[end]] + 1;
+            auto it = charIndex.find(s[end]);
+            if (it != charIndex.end() && it->second >= start) {
+                start = it->second + 1; // Update start.
             }
-            charIndexe[s[end]] = end;
-            int currentSubstrLen = end - start + 1;
-            if (currentSubstrLen > len) {
-                len = currentSubstrLen;
-            }
+            charIndex[s[end]] = end; // Update the last index of the current character.
+
+            maxLen = max(maxLen, end - start + 1); // max assings the value only if the value is larger than LHS.
         }
-        return len;
+        return maxLen;
     }
 };
 
