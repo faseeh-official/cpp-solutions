@@ -1,1 +1,0 @@
-g++ add_two_numbers.cpp -o a

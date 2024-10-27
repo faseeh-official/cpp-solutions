@@ -22,6 +22,7 @@
 
 #include<iostream>
 #include<conio.h>
+#include<vector>
 
 struct Node {
     int data;
@@ -53,13 +54,27 @@ void printList(Node* head) {
     std::cout << std::endl;
 }
 
-int main() {
-    Node* head = nullptr;
-    insertEnd(head, 1);
-    insertEnd(head, 2);
-    insertEnd(head, 3);
+void createLinkedListFromInput(std::string inputMessage, Node*& head) {
+    std::cout << inputMessage << std::endl;
+    while (true) {
+        std::string input;
+        std::getline(std::cin, input);
+        if (input == "") {
+            break;
+        }
+        int value = stoi(input);
+        insertEnd(head, value);
+    }
+}
 
-    printList(head);
+int main() {
+    Node* l1 = nullptr;
+    createLinkedListFromInput("Enter values for the first linked list.", l1);
+    Node* l2 = nullptr;
+    createLinkedListFromInput("Enter values for the second linked list.", l2);
+
+    printList(l1);
+    printList(l2);
 
     _getch();
     return 0;
