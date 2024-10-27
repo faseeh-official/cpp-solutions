@@ -24,6 +24,8 @@
 #include<conio.h>
 #include<vector>
 
+
+
 struct Node {
     int data;
     Node* next;
@@ -45,14 +47,45 @@ void insertEnd(Node*& head, int value) {
     temp->next = newNode;
 }
 
-void printList(Node* head) {
+void printList(Node* head, std::string sep) {
     Node* temp = head;
     while (temp) {
-        std::cout << temp->data << " ";
+        std::cout << temp->data;
         temp = temp->next;
+        if (temp) {
+            std::cout << sep;
+        }
     }
     std::cout << std::endl;
 }
+
+class Solution {
+public:
+    Node* addTwoNumbers(Node* l1, Node* l2) {
+        Node* dummyHead = new Node(0); // Placeholder for the result list
+        Node* current = dummyHead; // Pointer to build the new list
+        int carry = 0; // To hold carry value
+
+        while (l1 != nullptr || l2 != nullptr || carry) {
+            int sum = carry; // Start with the carry
+
+            if (l1 != nullptr) {
+                sum += l1->data; // Add l1's value
+                l1 = l1->next; // Move to the next node
+            }
+            if (l2 != nullptr) {
+                sum += l2->data; // Add l2's value
+                l2 = l2->next; // Move to the next node
+            }
+
+            carry = sum / 10; // Calculate the new carry
+            current->next = new Node(sum % 10); // Create a new node with the digit
+            current = current->next; // Move to the next node in the result
+        }
+
+        return dummyHead->next; // Return the next of dummy head, which is the actual head of the result list
+    }
+};
 
 void createLinkedListFromInput(std::string inputMessage, Node*& head) {
     std::cout << inputMessage << std::endl;
@@ -73,8 +106,12 @@ int main() {
     Node* l2 = nullptr;
     createLinkedListFromInput("Enter values for the second linked list.", l2);
 
-    printList(l1);
-    printList(l2);
+    std::cout << "Calling the function..." << std::endl;
+    Node* returnList = Solution().addTwoNumbers(l1, l2);
+    std::cout << "List returned: " << std::endl;
+    std::string sep = ", ";
+    printList(returnList, sep);
+
 
     _getch();
     return 0;
