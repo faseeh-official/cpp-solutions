@@ -29,14 +29,14 @@ using namespace std;
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        std::unordered_map<char, int> charIndexes; // Biggest.
+        std::unordered_map<char, int> charIndexe; // Biggest.
         int len = 0; // Of the longest substring.
         int start = 0;
         for (int end = 0; end < s.length(); end++) {
-            if (charIndexes.count(s[end]) > 0 && charIndexes[s[end]] >= start) {
-                start = charIndexes[s[end]] + 1;
+            if (charIndexe.count(s[end]) > 0 && charIndexe[s[end]] >= start) {
+                start = charIndexe[s[end]] + 1;
             }
-            charIndexes[s[end]] = end;
+            charIndexe[s[end]] = end;
             int currentSubstrLen = end - start + 1;
             if (currentSubstrLen > len) {
                 len = currentSubstrLen;
